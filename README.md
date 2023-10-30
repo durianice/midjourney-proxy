@@ -2,7 +2,7 @@
 
 代理 MidJourney 的discord频道，实现api形式调用AI绘图
 
-[![GitHub release](https://img.shields.io/static/v1?label=release&message=v2.5.4&color=blue)](https://www.github.com/novicezk/midjourney-proxy)
+[![GitHub release](https://img.shields.io/static/v1?label=release&message=v2.5.1&color=blue)](https://www.github.com/novicezk/midjourney-proxy)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 ## 主要功能
@@ -13,23 +13,18 @@
 - [x] 支持中文prompt翻译，需配置百度翻译或gpt
 - [x] prompt 敏感词预检测，支持覆盖调整
 - [x] user-token 连接 wss，可以获取错误信息和完整功能
+- [x] 支持 discord域名(server、cdn、wss)反代，配置 mj.ng-discord
 - [x] 支持多账号配置，每个账号可设置对应的任务队列
 
-**🚀 更多功能请查看 [midjourney-proxy-plus](https://github.com/litter-coder/midjourney-proxy-plus)**
-> - [x] 支持开源版的所有功能
-> - [x] 支持 Shorten(prompt分析) 指令
-> - [x] 支持焦点移动: Pan ⬅️ ➡️ ⬆️ ⬇️
-> - [x] 支持图片变焦: Zoom 🔍
-> - [x] 支持局部重绘: Vary (Region) 🖌
-> - [x] 支持几乎所有的关联按钮动作和🎛️ Remix模式
-> - [x] 支持获取图片的seed值
-> - [x] 账号池持久化，动态维护
-> - [x] 支持获取账号/info、/settings信息
-> - [x] 账号settings设置
-> - [x] 内嵌管理后台页面
+## 以下为在原版基础增加的功能
+- [x] 支持U之后的所有相关动作：Zoom(图片变焦)、Pan(焦点移动) 等
+- [x] 支持U之后的所有相关动作：Vary(Strong)、Vary(Subtle) 等
+- [x] 支持帐户info功能
+- [x] 支持settings所有属性
+- [x] 支持Upscale(2x)、Upscale(4x)
 
 ## 使用前提
-1. 注册并订阅 MidJourney，创建`自己的服务器和频道`，参考 https://docs.midjourney.com/docs/quick-start
+1. 注册并订阅 MidJourney，创建自己的频道，参考 https://docs.midjourney.com/docs/quick-start
 2. 获取用户Token、服务器ID、频道ID：[获取方式](./docs/discord-params.md)
 
 ## 快速启动
@@ -48,30 +43,29 @@
 - mj.task-store.type: 任务存储方式，默认in_memory(内存\重启后丢失)，可选redis
 - mj.task-store.timeout: 任务存储过期时间，过期后删除，默认30天
 - mj.api-secret: 接口密钥，为空不启用鉴权；调用接口时需要加请求头 mj-api-secret
-- mj.translate-way: 中文prompt翻译成英文的方式，可选null(默认)、baidu、gpt
+- mj.translate-way: 中文prompt翻译成英文的方式，可选null(默认)、baidu、gpt、deepl
 - 更多配置查看 [配置项](./docs/config.md)
 
 ## 相关文档
 1. [API接口说明](./docs/api.md)
-2. [版本更新记录](https://github.com/novicezk/midjourney-proxy/wiki/%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
+2. [版本更新记录](https://github.com/imkratos/midjourney-proxy/wiki/%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
 ## 注意事项
 1. 作图频繁等行为，可能会触发midjourney账号警告，请谨慎使用
-2. 常见问题及解决办法见 [Wiki / FAQ](https://github.com/novicezk/midjourney-proxy/wiki/FAQ)
-3. 感兴趣的朋友也欢迎加入交流群讨论一下，扫码进群名额已满，加管理员微信邀请进群，备注: mj加群
+2. 常见问题及解决办法见 [Wiki / FAQ](https://github.com/imkratos/midjourney-proxy/wiki/FAQ)
+3. 在 [Issues](https://github.com/imkratos/midjourney-proxy/issues) 中提出其他问题或建议
 
- <img src="https://raw.githubusercontent.com/novicezk/midjourney-proxy/main/docs/manager-qrcode.png" width="220" alt="微信二维码"/>
 
 ## 应用项目
 依赖此项目且开源的，欢迎联系作者，加到此处展示
 - [wechat-midjourney](https://github.com/novicezk/wechat-midjourney) : 代理微信客户端，接入MidJourney，仅示例应用场景，不再更新
 - [stable-diffusion-mobileui](https://github.com/yuanyuekeji/stable-diffusion-mobileui) : SDUI，基于本接口和SD，可一键打包生成H5和小程序
+- [ChatGPT-Midjourney](https://github.com/Licoy/ChatGPT-Midjourney) : 一键拥有你自己的 ChatGPT+Midjourney 网页服务
 - [MidJourney-Web](https://github.com/ConnectAI-E/MidJourney-Web) : 🍎 Supercharged Experience For MidJourney On Web UI
 
-## 开放API
-提供非官方的MJ/SD开放API，添加管理员微信咨询，备注: api
-
 ## 其它
-如果觉得这个项目对您有所帮助，请帮忙点个star
+如果觉得这个项目对你有所帮助，请帮忙点个star；也可以请作者喝杯茶～
+
+  <img src="https://raw.githubusercontent.com/imkratos/midjourney-proxy/main/docs/wxcode.png" width="220" alt="微信二维码"/>
 
 [![Star History Chart](https://api.star-history.com/svg?repos=novicezk/midjourney-proxy&type=Date)](https://star-history.com/#novicezk/midjourney-proxy&Date)

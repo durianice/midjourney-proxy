@@ -25,4 +25,17 @@ public interface DiscordService {
 
 	Message<String> sendImageMessage(String content, String finalFileName);
 
+
+	Message<Void> zoom(String messageId, String messageHash, String nonce,String zoomOut);
+
+	Message<Void> upscale(String messageId, String messageHash, String nonce, String upscale);
+	Message<Void> vary(String messageId, String messageHash, String nonce,String vary);
+
+	Message<Void> move(String messageId, String messageHash, String nonce,String move);
+
+	Message<Void> info(String nonce);
+
+	Message<Void> settings(String nonce, String value);
+
+
 }
